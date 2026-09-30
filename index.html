@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIAMANTENSCHMIEDE // We Turn Zombie Code into Gentlemen</title>
+  <!-- Retro Monospace & Display Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=VT323&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vault: {
+              yellow: '#FDB813',
+              blue: '#0F4C81',
+              dark: '#12151A',
+              card: '#1A1F26',
+              border: '#2C3540',
+              accent: '#00F0FF',
+              green: '#39FF14',
+              danger: '#FF3366'
+            }
+          },
+          fontFamily: {
+            mono: ['"Fira Code"', 'monospace'],
+            retro: ['"VT323"', 'monospace'],
+            display: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #12151A;
+      color: #E2E8F0;
+      font-family: 'Fira Code', monospace;
+    }
+    .crt-overlay {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+    }
+    .glow-yellow {
+      text-shadow: 0 0 10px rgba(253, 184, 19, 0.6);
+    }
+    .glow-cyan {
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+    }
+    .scanline {
+      position: relative;
+      overflow: hidden;
+    }
+    .scanline::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
+      background-size: 100% 4px;
+      z-index: 10;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative flex flex-col selection:bg-vault-yellow selection:text-black">
+  <div class="fixed inset-0 crt-overlay z-50 pointer-events-none"></div>
+
+  <!-- TOP STATUS BAR -->
+  <header class="border-b border-vault-border bg-vault-card/80 backdrop-blur px-6 py-3 flex justify-between items-center text-xs tracking-wider sticky top-0 z-40">
+    <div class="flex items-center space-x-3">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-vault-green animate-pulse"></span>
+      <span class="font-bold text-vault-yellow">SYSTEM // DIAMANTENSCHMIEDE_OS [V2.4]</span>
+      <span class="text-gray-500 hidden sm:inline">|</span>
+      <span class="text-gray-400 hidden sm:inline">MODE: AUTONOMOUS PRODUCTION</span>
+    </div>
+    <div class="flex items-center space-x-6">
+      <div class="text-gray-400">STATUS: <span class="text-vault-accent">15/15 TITANEN GEHÄRTET</span></div>
+      <a href="https://github.com/tastenkasperle/scrub-vault" target="_blank" class="bg-vault-yellow/10 border border-vault-yellow text-vault-yellow hover:bg-vault-yellow hover:text-black transition-all px-3 py-1 rounded font-bold">
+        PIONEER GITHUB &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH VAULT MACHINE -->
+  <main class="flex-grow max-w-7xl mx-auto w-full px-6 py-12 space-y-16">
+    
+    <div class="text-center space-y-4">
+      <div class="inline-block border border-vault-yellow/30 bg-vault-yellow/5 px-4 py-1 rounded-full text-vault-yellow text-xs tracking-widest font-semibold uppercase">
+        ★ The Refinement Protocol ★
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-display font-extrabold tracking-tight text-white uppercase glow-yellow">
+        WE DON'T REINVENT THE WHEEL.<br>
+        <span class="text-vault-yellow">WE TURN ZOMBIES INTO GENTLEMEN.</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-gray-400 text-sm sm:text-base leading-relaxed">
+        Willkommen in der Diamantenschmiede. Wir bergen verlassene Big-Tech-Legenden, befreien sie von Ballast und C++ Abhängigkeiten und härten sie zu autarken, zero-dependency MCP-Sicherheitswerkzeugen für autonome KI-Agenten.
+      </p>
+    </div>
+
+    <!-- THE MACHINE IMAGE CAROUSEL / SPOTLIGHT -->
+    <div class="relative border-2 border-vault-yellow/40 rounded-xl overflow-hidden bg-vault-card shadow-2xl shadow-vault-yellow/10 scanline">
+      <img src="assets/zaubermaschine.jpg" alt="Die Diamantenschmiede Zaubermaschine" class="w-full h-auto object-cover max-h-[550px]">
+      <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-vault-dark via-vault-dark/80 to-transparent p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-end sm:items-center">
+        <div>
+          <span class="text-vault-accent font-retro text-2xl tracking-widest block">FIG 1.0: THE PIP-CONVEYOR ENGINE</span>
+          <p class="text-gray-300 text-xs sm:text-sm max-w-xl">
+            Veraltetes Spaghetti-Repo rein &rarr; Durchleuchtung via Anti-Carbonara & Raptor Guard SAST &rarr; Gestriegelter, strahlender Spitzen-Gentleman raus.
+          </p>
+        </div>
+        <div class="mt-4 sm:mt-0 flex space-x-3">
+          <button onclick="triggerSound()" class="bg-vault-yellow text-black font-bold px-4 py-2 rounded text-xs hover:bg-yellow-400 transition-transform active:scale-95">
+            ⚙️ MASCHINE STARTEN
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HARD FACTS & NUMBERS (SHOWBIZ MIT ZAHLEN) -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="border border-vault-border bg-vault-card p-5 rounded-lg text-center space-y-1">
+        <div class="text-3xl sm:text-4xl font-extrabold text-vault-yellow font-display">15 / 15</div>
+        <div class="text-xs text-gray-400 uppercase tracking-wider">Geschmiedete Titanen</div>
+      </div>
+      <div class="border border-vault-border bg-vault-card p-5 rounded-lg text-center space-y-1">
+        <div class="text-3xl sm:text-4xl font-extrabold text-vault-green font-display">0</div>
+        <div class="text-xs text-gray-400 uppercase tracking-wider">SAST Schwachstellen</div>
+      </div>
+      <div class="border border-vault-border bg-vault-card p-5 rounded-lg text-center space-y-1">
+        <div class="text-3xl sm:text-4xl font-extrabold text-vault-accent font-display">100%</div>
+        <div class="text-xs text-gray-400 uppercase tracking-wider">Zero-Dependency Core</div>
+      </div>
+      <div class="border border-vault-border bg-vault-card p-5 rounded-lg text-center space-y-1">
+        <div class="text-3xl sm:text-4xl font-extrabold text-purple-400 font-display">16.6k+</div>
+        <div class="text-xs text-gray-400 uppercase tracking-wider">Original GitHub Stars</div>
+      </div>
+    </div>
+
+    <!-- DIE INTERAKTIVE FLOTTEN-WERFT (THE HANGAR) -->
+    <div class="space-y-6">
+      <div class="flex justify-between items-end border-b border-vault-border pb-4">
+        <div>
+          <h2 class="text-2xl font-bold text-white uppercase tracking-wider flex items-center space-x-2">
+            <span>🚀</span> <span>DER FUHRPARK DER SCHMIEDE (HANGAR)</span>
+          </h2>
+          <p class="text-xs text-gray-400">Wähle ein Projekt zur Inspektion der technischen Datenblätter.</p>
+        </div>
+        <div class="text-xs text-vault-yellow font-mono hidden sm:block">STATUS: READY TO DEPLOY</div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- PIONEER CARD #1: SCRUBVAULT -->
+        <div class="border-2 border-vault-yellow bg-vault-card p-6 rounded-xl space-y-4 relative shadow-lg shadow-vault-yellow/5 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-xs font-bold bg-vault-yellow text-black px-2 py-0.5 rounded uppercase">★ PIONEER LIVE ★</span>
+              <span class="text-xs text-gray-400 font-mono">MIT / APACHE</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">ScrubVault</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Reversibler In-Memory PII-Airgap-Proxy. Verhindert DSGVO Art. 32 Datenlecks beim Senden vertraulicher Prompts an ChatGPT, Claude & Gemini.
+            </p>
+            <div class="border-t border-vault-border pt-3 space-y-1 text-[11px] font-mono text-gray-400">
+              <div>&bull; Herkunft: <span class="text-gray-200">scrubadub (Ex-Startup)</span></div>
+              <div>&bull; MCP Tools: <span class="text-vault-accent">scrub_mask, scrub_unmask</span></div>
+              <div>&bull; Audit: <span class="text-vault-green">0 Findings (Kugelsicher)</span></div>
+            </div>
+          </div>
+          <div class="pt-4">
+            <a href="https://github.com/tastenkasperle/scrub-vault" target="_blank" class="block w-full text-center bg-vault-yellow text-black font-bold py-2 rounded text-xs hover:bg-yellow-400 transition-colors">
+              AUF GITHUB ANSEHEN &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD #2: HTTP PROMPT RELOADED -->
+        <div class="border border-vault-border bg-vault-card p-6 rounded-xl space-y-4 flex flex-col justify-between hover:border-vault-accent transition-colors">
+          <div class="space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-xs font-bold bg-vault-accent/20 text-vault-accent px-2 py-0.5 rounded uppercase">9.1k Stars Revival</span>
+              <span class="text-xs text-gray-400 font-mono">MIT</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">HTTP Prompt Reloaded</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Zustandserhaltende Terminal-REPL für APIs. Navigieren wie im Dateisystem (`cd /api/v1/users`) mit automatischer Header-Persistence & MCP.
+            </p>
+            <div class="border-t border-vault-border pt-3 space-y-1 text-[11px] font-mono text-gray-400">
+              <div>&bull; Herkunft: <span class="text-gray-200">httpie/http-prompt</span></div>
+              <div>&bull; Status: <span class="text-vault-green">Bereit für Showcase</span></div>
+              <div>&bull; Audit: <span class="text-vault-green">0 Findings</span></div>
+            </div>
+          </div>
+          <div class="pt-4">
+            <button class="w-full text-center border border-vault-border text-gray-300 font-bold py-2 rounded text-xs hover:border-white transition-colors">
+              IN RESERVE (RAMPE)
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD #3: HYPERDRIVE MESH -->
+        <div class="border border-vault-border bg-vault-card p-6 rounded-xl space-y-4 flex flex-col justify-between hover:border-vault-accent transition-colors">
+          <div class="space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-xs font-bold bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded uppercase">P2P Königsklasse</span>
+              <span class="text-xs text-gray-400 font-mono">MIT</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">HyperDrive Mesh</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Dezentrales, serverloses Agenten-Gedächtnis auf Basis kryptografischer Merkle-Trees, Hyperswarm DHT und globalem MCP-Server.
+            </p>
+            <div class="border-t border-vault-border pt-3 space-y-1 text-[11px] font-mono text-gray-400">
+              <div>&bull; Herkunft: <span class="text-gray-200">Beaker / Dat Protocol</span></div>
+              <div>&bull; Status: <span class="text-vault-green">Bereit für Showcase</span></div>
+              <div>&bull; Audit: <span class="text-vault-green">6/6 Suiten Grün</span></div>
+            </div>
+          </div>
+          <div class="pt-4">
+            <button class="w-full text-center border border-vault-border text-gray-300 font-bold py-2 rounded text-xs hover:border-white transition-colors">
+              IN RESERVE (RAMPE)
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD #4: KONFIG MCP ENGINE -->
+        <div class="border border-vault-border bg-vault-card p-6 rounded-xl space-y-4 flex flex-col justify-between hover:border-vault-accent transition-colors">
+          <div class="space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-xs font-bold bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded uppercase">OpenAPI Generator</span>
+              <span class="text-xs text-gray-400 font-mono">MIT</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Konfig MCP Engine</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Übersetzt jede beliebige Swagger/OpenAPI 3.0/3.1 Spezifikation live in typisierte MCP-Tools für autonome Agenten ohne Handarbeit.
+            </p>
+            <div class="border-t border-vault-border pt-3 space-y-1 text-[11px] font-mono text-gray-400">
+              <div>&bull; Herkunft: <span class="text-gray-200">konfig-dev (Ex-C3-AI)</span></div>
+              <div>&bull; Status: <span class="text-vault-green">Bereit für Showcase</span></div>
+              <div>&bull; Edge Cases: <span class="text-vault-accent">AnyOf / OneOf gelöst</span></div>
+            </div>
+          </div>
+          <div class="pt-4">
+            <button class="w-full text-center border border-vault-border text-gray-300 font-bold py-2 rounded text-xs hover:border-white transition-colors">
+              IN RESERVE (RAMPE)
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD #5: REPOKID CORE -->
+        <div class="border border-vault-border bg-vault-card p-6 rounded-xl space-y-4 flex flex-col justify-between hover:border-vault-accent transition-colors">
+          <div class="space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-xs font-bold bg-red-500/20 text-red-300 px-2 py-0.5 rounded uppercase">Netflix Security</span>
+              <span class="text-xs text-gray-400 font-mono">APACHE 2.0</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Repokid Core</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Enterprise Least-Privilege IAM Engine. Strippt ungenutzte AWS-Rechte und sichert Snapshots im SQLite-Rollback-Tresor mit 1-Click Rollback.
+            </p>
+            <div class="border-t border-vault-border pt-3 space-y-1 text-[11px] font-mono text-gray-400">
+              <div>&bull; Herkunft: <span class="text-gray-200">Netflix/repokid</span></div>
+              <div>&bull; Entkoppelt: <span class="text-vault-accent">Zero-Infra / Kein DynamoDB</span></div>
+              <div>&bull; Audit: <span class="text-vault-green">0 Findings</span></div>
+            </div>
+          </div>
+          <div class="pt-4">
+            <button class="w-full text-center border border-vault-border text-gray-300 font-bold py-2 rounded text-xs hover:border-white transition-colors">
+              IN RESERVE (RAMPE)
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD #6: ZOMBIEHUNTER -->
+        <div class="border border-vault-border bg-vault-card p-6 rounded-xl space-y-4 flex flex-col justify-between hover:border-vault-accent transition-colors">
+          <div class="space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-xs font-bold bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded uppercase">FinOps Waffe</span>
+              <span class="text-xs text-gray-400 font-mono">STEALTH ASSET</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">ZombieHunter</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Cloud-Governance & Shadow-IT Scanner. Berechnet monatlich verbranntes Geld und generiert HCL-Importe gegen verwaiste Cloud-Ressourcen.
+            </p>
+            <div class="border-t border-vault-border pt-3 space-y-1 text-[11px] font-mono text-gray-400">
+              <div>&bull; Herkunft: <span class="text-gray-200">driftctl (Ex-CloudSkiff)</span></div>
+              <div>&bull; Modell: <span class="text-vault-yellow">20% Shared Savings Honorar</span></div>
+              <div>&bull; Audit: <span class="text-vault-green">7/7 Suiten Grün</span></div>
+            </div>
+          </div>
+          <div class="pt-4">
+            <button class="w-full text-center border border-vault-border text-gray-400 font-bold py-2 rounded text-xs cursor-not-allowed">
+              🔒 PRIVATER TRESOR
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TERMINAL INTERACTION GAG -->
+    <div class="border border-vault-border bg-black/60 rounded-xl p-6 font-mono text-xs space-y-3">
+      <div class="flex items-center space-x-2 text-gray-500 border-b border-vault-border/50 pb-2">
+        <span class="w-3 h-3 rounded-full bg-red-500/60 inline-block"></span>
+        <span class="w-3 h-3 rounded-full bg-yellow-500/60 inline-block"></span>
+        <span class="w-3 h-3 rounded-full bg-green-500/60 inline-block"></span>
+        <span class="text-gray-400 pl-2">bash - diamantenschmiede-cli // interactive query</span>
+      </div>
+      <div class="text-gray-300">
+        <p><span class="text-vault-green">guest@schmiede:~$</span> diamantenschmiede --verify-fleet</p>
+        <p class="text-gray-400">[INFO] Scanning 15 forged engines across local sector...</p>
+        <p class="text-gray-400">[PASS] Anti-Carbonara standard: 100% compliant</p>
+        <p class="text-gray-400">[PASS] Raptor Guard SAST: 0 vulnerabilities found</p>
+        <p class="text-vault-yellow font-bold">[READY] System Pioneer #01 'ScrubVault' online at GitHub: tastenkasperle/scrub-vault</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-vault-border bg-vault-card/40 px-6 py-6 text-center text-xs text-gray-500">
+    <p>&copy; 2026 DIAMANTENSCHMIEDE. Handwerkliche Software-Veredelung & Autonome Agenten-Infrastruktur.</p>
+    <p class="mt-1">Keine Cookies. Keine Tracker. Keine unnötigen Dependencies.</p>
+  </footer>
+
+  <script>
+    function triggerSound() {
+      alert("⚙️ ZAUBERMASCHINE AKTIV: Zombie-Code erkannt... Verkrustete Dependencies werden zerkleinert... Raptor Guard Härtung läuft... BING! Ein schneidiger Gentleman rollt vom Band!");
+    }
+  </script>
+</body>
+</html>
